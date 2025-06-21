@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: #f0f0f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hourglass {
+  position: relative;
+  width: 250px;
+  height: 350px;
+  background: linear-gradient(to bottom, #cfcfd1, #b4b4b7);
+  clip-path: polygon(
+    25% 0%, 75% 0%, 
+    75% 45%, 55% 50%, 75% 55%, 75% 100%, 25% 100%, 25% 55%, 45% 50%, 25% 45%
+  );
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+.sand-top {
+  position: absolute;
+  top: 30px;
+  left: 75px;
+  width: 100px;
+  height: 125px;
+  background: linear-gradient(180deg, #f3c08b, #d4a664);
+  border-radius: 50% / 70%;
+  animation: sandTopDrain 10s linear forwards infinite;
+  box-shadow: inset 0 4px 8px rgba(255, 222, 130, 0.7);
+}
+.sand-fall {
+  position: absolute;
+  top: 155px;
+  left: 118px;
+  width: 10px;
+  height: 100px;
+  background: linear-gradient(180deg, #f3c08b, #d4a664);
+  animation: sandFall 10s linear forwards infinite;
+  filter: drop-shadow(0 0 1.5px rgba(210,170,80,0.7));
+  border-radius: 5px;
+}
+.sand-bottom {
+  position: absolute;
+  bottom: 30px;
+  left: 75px;
+  width: 100px;
+  height: 0;
+  background: linear-gradient(180deg, #f3c08b, #d4a664);
+  border-radius: 50% / 70%;
+  box-shadow: inset 0 4px 8px rgba(255, 222, 130, 0.7);
+  animation: sandBottomFill 10s linear forwards infinite;
+}
+@keyframes sandTopDrain {
+  0% { height: 125px; opacity: 1; }
+  100% { height: 0; opacity: 0.4; }
+}
+@keyframes sandFall {
+  0% { height: 0; opacity: 0; }
+  10% { height: 100px; opacity: 1; }
+  90% { height: 100px; opacity: 1; }
+  100% { height: 0; opacity: 0; }
+}
+@keyframes sandBottomFill {
+  0% { height: 0; opacity: 0.4; }
+  100% { height: 125px; opacity: 1; }
+}
